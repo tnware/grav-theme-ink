@@ -1,0 +1,18 @@
+<footer class="clearfix">
+    <div class="ink-grid">
+        <ul class="unstyled inline half-vertical-space">
+        {% for page in pages.children %}
+        {% if page.visible %}
+        {% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
+        <li class="{{ current_page }}"><a href="{{ page.url }}">{{ page.menu }}</a></li>
+        {% endif %}
+        {% endfor %}
+        </ul>
+        <p class="note">Ink Theme for <a href="#">Grav</a> by <a href="#">Tyler Woods</a> based on the <a href="#">Ink CSS Framework</a></p>
+        <a href="https://github.com/tnware/grav-theme-cascade"><span class="icon icon-32 icon-github"></span></a>
+    </div>
+</footer>
+
+</body>
+{% block bottom %}{% endblock %}
+</html>

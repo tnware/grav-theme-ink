@@ -1,0 +1,23 @@
+{% extends 'core/blog.html.twig' %}
+
+{% set collection = page.collection() %}
+
+	{% block content %}
+		{% set blog_image = page.media.images|first.grayscale().contrast(20).brightness(-100).colorize(-35,81,122) %}
+
+		{% if blog_image %}
+		<header>
+		{% else %}
+		<header>
+		{% endif %}
+		  </header>
+
+				{% for child in collection %}
+			        {% include 'core/blog_item.html.twig' with {'blog':page, 'page':child, 'truncate':true} %}
+			    {% endfor %}
+
+                {% if config.plugins.pagination.enabled and collection.params.pagination %}
+                    {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+                {% endif %}
+
+	{% endblock %}
